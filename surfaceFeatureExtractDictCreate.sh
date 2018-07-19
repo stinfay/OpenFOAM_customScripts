@@ -2,7 +2,7 @@
 
 stlName=$1
 includedAngle=$2
-eMeshName=$(echo "$stlName" | sed -e "s/\.[0-9A-Za-z\.]*//")
+eMeshName="stlFile.emesh"
 fileName="system/surfaceFeatureExtractDict"
 
 echo "/*--------------------------------*- C++ -*------------------------*\\"  > "$fileName"

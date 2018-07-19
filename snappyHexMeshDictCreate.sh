@@ -1,7 +1,7 @@
 #!/bin/bash
 
 stlName=$1
-eMeshName=$(echo "$stlName" | sed -e "s/\.[0-9A-Za-z]*$//")
+eMeshName="stlFile.eMesh"
 
 # castellated mesh settings
 maxLocalCells=100000
@@ -60,7 +60,7 @@ for i in {0..5}; do
 	bBoxFix[i]=$(echo "${bBox[$i]}" | sed -e "s/e/\*10\^/")
 done
 
-wScale=2
+wScale=1
 xWidth=$(echo "scale=$bScale; (${bBoxFix[3]}-(${bBoxFix[0]}))*$wScale" | bc)
 yWidth=$(echo "scale=$bScale; (${bBoxFix[4]}-(${bBoxFix[1]}))*$wScale" | bc)
 zWidth=$(echo "scale=$bScale; (${bBoxFix[5]}-(${bBoxFix[2]}))*$wScale" | bc)
@@ -121,7 +121,7 @@ echo "    nCellsBetweenLevels $nCellsBetweenLevels;" 				>> "$fileName"
 echo "    features" 												>> "$fileName"
 echo "    (" 														>> "$fileName"
 echo "        {" 													>> "$fileName"
-echo "            file \"$eMeshName.eMesh\";" 						>> "$fileName"
+echo "            file \"$eMeshName\";" 							>> "$fileName"
 echo "            level $featureLevel;" 							>> "$fileName"
 echo "        }" 													>> "$fileName"
 echo "    );" 														>> "$fileName"
