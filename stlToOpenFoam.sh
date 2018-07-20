@@ -81,7 +81,7 @@ controlDictCreate.sh $endTime $deltaT 1
 surfaceFeatureExtractDictCreate.sh stlFile.stl 180
 
 #blockMeshDictCreate.sh $l $w $h 2.5 3 $meshBoxX $meshBoxY $meshBoxZ 0 0 0 1 2
-blockMeshDictCreate_V2.sh $l $w $h 4 6 2 $meshBoxX $meshBoxX $meshBoxZ
+blockMeshDictCreate_V2.sh $l $w $h 1.5 2 1.5 $meshBoxX $meshBoxX $meshBoxZ
 
 snappyHexMeshDictCreate.sh stlFile.stl
 meshQualityDictCreate.sh
@@ -96,11 +96,11 @@ constantPropertiesCreate.sh
 
 # generate mesh
 touch log.txt
-#surfaceFeatureExtract 2>log.txt
-#blockMesh 2>log.txt
+surfaceFeatureExtract 2>log.txt
+blockMesh 2>log.txt
 #paraFoam
-#checkMesh >> log.txt 2>&1
-#snappyHexMesh -overwrite 2>log.txt
-#checkMesh >> log.txt 2>&1
+checkMesh >> log.txt 2>&1
+snappyHexMesh -overwrite 2>log.txt
+checkMesh >> log.txt 2>&1
 
-#simpleFoam
+simpleFoam
