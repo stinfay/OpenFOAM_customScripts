@@ -60,7 +60,7 @@ for i in {0..5}; do
 	bBoxFix[i]=$(echo "${bBox[$i]}" | sed -e "s/e/\*10\^/")
 done
 
-wScale=1
+wScale=2
 xWidth=$(echo "scale=$bScale; (${bBoxFix[3]}-(${bBoxFix[0]}))*$wScale" | bc)
 yWidth=$(echo "scale=$bScale; (${bBoxFix[4]}-(${bBoxFix[1]}))*$wScale" | bc)
 zWidth=$(echo "scale=$bScale; (${bBoxFix[5]}-(${bBoxFix[2]}))*$wScale" | bc)
