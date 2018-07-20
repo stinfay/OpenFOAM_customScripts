@@ -60,7 +60,7 @@ for i in {0..5}; do
 	bBoxFix[i]=$(echo "${bBox[$i]}" | sed -e "s/e/\*10\^/")
 done
 
-wScale=2
+wScale=1
 xWidth=$(echo "scale=$bScale; (${bBoxFix[3]}-(${bBoxFix[0]}))*$wScale" | bc)
 yWidth=$(echo "scale=$bScale; (${bBoxFix[4]}-(${bBoxFix[1]}))*$wScale" | bc)
 zWidth=$(echo "scale=$bScale; (${bBoxFix[5]}-(${bBoxFix[2]}))*$wScale" | bc)
@@ -73,9 +73,9 @@ xMax=$(echo "scale=$bScale; ${bBoxFix[3]}+($xWidth/2)*$wScale" | bc)
 yMax=$(echo "scale=$bScale; ${bBoxFix[4]}+($yWidth/2)*$wScale" | bc)
 zMax=$(echo "scale=$bScale; ${bBoxFix[5]}+($zWidth/2)*$wScale" | bc)
 
-inMeshX=$(echo "scale=$bScale; $xMax+($xWidth*1.1)" | bc)
-inMeshY=$(echo "scale=$bScale; $yMax+($yWidth*1.1)" | bc)
-inMeshZ=$(echo "scale=$bScale; $zMax+($zWidth*1.1)" | bc)
+inMeshX=$(echo "scale=$bScale; $xMax+($xWidth*0.9)" | bc)
+inMeshY=$(echo "scale=$bScale; $yMax+($yWidth*0.9)" | bc)
+inMeshZ=$(echo "scale=$bScale; $zMax+($zWidth*0.9)" | bc)
 
 echo "/*--------------------------------*- C++ -*------------------------*\\"  > "$fileName"
 echo "|  F ield         | OpenFOAM: The Open Source CFD Toolbox           |"  >> "$fileName"

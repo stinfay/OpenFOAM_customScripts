@@ -81,7 +81,7 @@ controlDictCreate.sh $endTime $deltaT 1
 surfaceFeatureExtractDictCreate.sh stlFile.stl 180
 
 #blockMeshDictCreate.sh $l $w $h 2.5 3 $meshBoxX $meshBoxY $meshBoxZ 0 0 0 1 2
-blockMeshDictCreate_V2.sh $l $w $h 3 5 3 $meshBoxX $meshBoxX $meshBoxZ
+blockMeshDictCreate_V2.sh $l $w $h 4 6 2 $meshBoxX $meshBoxX $meshBoxZ
 
 snappyHexMeshDictCreate.sh stlFile.stl
 meshQualityDictCreate.sh

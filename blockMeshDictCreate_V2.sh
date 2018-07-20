@@ -22,7 +22,7 @@ r=$(echo "scale=$bcScale; $d/2" | bc)
 d_c3=$(echo "scale=$bcScale; $d*$c3" | bc)
 w_c2=$(echo "scale=$bcScale; $w*$c2/2" | bc)
 arcR=$(echo "scale=$bcScale; $d*s(a(1))" | bc -l)
-arcR_c=$(echo "scale=$bcScale; $arcR*2" | bc -l)
+arcR_c=$(echo "scale=$bcScale; $d" | bc -l)
 d2=$(echo "scale=$bcScale; $d*2" | bc)
 
 echo $w_c2
@@ -91,10 +91,10 @@ echo "    arc 4 7 ($arcR $arcR -$w_c2)" >> "$fileName"
 echo "    arc 14 15 ($arcR -$arcR $w_c2)" >> "$fileName"
 echo "    arc 12 15 ($arcR $arcR $w_c2)" >> "$fileName"
 
-echo "    BSpline 5 4 ((-$d2 $d -$w_c2) (-$d $arcR_c -$w_c2))" >> "$fileName"
-echo "    BSpline 5 6 ((-$d2 -$d -$w_c2) (-$d -$arcR_c -$w_c2))" >> "$fileName"
-echo "    BSpline 13 12 ((-$d2 $d $w_c2) (-$d $arcR_c $w_c2))" >> "$fileName"
-echo "    BSpline 13 14 ((-$d2 -$d $w_c2) (-$d -$arcR_c $w_c2))" >> "$fileName"
+echo "    polyLine 5 4 ((-$d2 $d -$w_c2))" >> "$fileName"
+echo "    polyLine 5 6 ((-$d2 -$d -$w_c2))" >> "$fileName"
+echo "    polyLine 13 12 ((-$d2 $d $w_c2))" >> "$fileName"
+echo "    polyLine 13 14 ((-$d2 -$d $w_c2))" >> "$fileName"
 echo ");"       >> "$fileName"
 
 echo "" >> "$fileName"
@@ -119,4 +119,22 @@ echo "            (5 4 12 13)" >> "$fileName"
 echo "            (6 5 13 14)" >> "$fileName"
 echo "        );" >> "$fileName"
 echo "    }" >> "$fileName"
+echo "    sideWalls" >> "$fileName"
+echo "    {" >> "$fileName"
+echo "        type patch;" >> "$fileName"
+echo "        faces" >> "$fileName"
+echo "        (" >> "$fileName"
+echo "            (0 1 2 3)" >> "$fileName"
+echo "            (0 4 5 1)" >> "$fileName"
+echo "            (1 5 6 2)" >> "$fileName"
+echo "            (2 6 7 3)" >> "$fileName"
+echo "            (3 7 4 0)" >> "$fileName"
+echo "            (8 9 10 11)" >> "$fileName"
+echo "            (8 12 13 9)" >> "$fileName"
+echo "            (9 13 14 10)" >> "$fileName"
+echo "            (10 14 15 11)" >> "$fileName"
+echo "            (11 15 12 8)" >> "$fileName"
+echo "        );" >> "$fileName"
+echo "    }" >> "$fileName"
 echo ");" >> "$fileName"
+
