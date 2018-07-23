@@ -96,11 +96,11 @@ constantPropertiesCreate.sh
 
 # generate mesh
 touch log.txt
-surfaceFeatureExtract 2>log.txt
-blockMesh 2>log.txt
+#surfaceFeatureExtract 2>log.txt
+#blockMesh 2>log.txt
 #paraFoam
-checkMesh >> log.txt 2>&1
-snappyHexMesh -overwrite 2>log.txt
-checkMesh >> log.txt 2>&1
+#checkMesh >> log.txt 2>&1
+#snappyHexMesh -overwrite 2>log.txt
+#checkMesh >> log.txt 2>&1
 
-simpleFoam
+#simpleFoam
